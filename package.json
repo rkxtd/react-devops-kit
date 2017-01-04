@@ -27,6 +27,9 @@
     "start": "concurrent --kill-others \"npm run start-prod\" \"npm run start-prod-api\"",
     "start-prod": "better-npm-run start-prod",
     "start-prod-api": "better-npm-run start-prod-api",
+    "stop-prod": "better-npm-run stop-prod",
+    "stop-prod-api": "better-npm-run stop-prod-api",
+    "kill-prod": "better-npm-run kill-prod",
     "build": "better-npm-run build",
     "postinstall": "npm run build",
     "lint": "eslint -c .eslintrc src api",
@@ -40,7 +43,7 @@
   },
   "betterScripts": {
     "start-prod": {
-      "command": "node ./bin/server.js",
+      "command": "pm2 start ./bin/server.js --name \"app\"",
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "production",
@@ -49,7 +52,7 @@
       }
     },
     "start-prod-api": {
-      "command": "node ./bin/api.js",
+      "command": "pm2 start ./bin/api.js --name \"api\"",
       "env": {
         "NODE_PATH": "./api",
         "NODE_ENV": "production",
@@ -72,6 +75,15 @@
         "NODE_ENV": "development",
         "APIPORT": 3030
       }
+    },
+    "stop-prod": {
+      "command": "pm2 stop app"
+    },
+    "stop-prod-api": {
+      "command": "pm2 stop api"
+    },
+    "kill-prod": {
+      "command": "pm2 kill"
     },
     "watch-client": {
       "command": "node webpack/webpack-dev-server.js",
@@ -105,6 +117,7 @@
     "body-parser": "^1.14.1",
     "compression": "^1.6.0",
     "express": "^4.13.3",
+    "express-ping": "^1.2.0",
     "express-session": "^1.12.1",
     "file-loader": "^0.8.5",
     "hoist-non-react-statics": "^1.0.3",

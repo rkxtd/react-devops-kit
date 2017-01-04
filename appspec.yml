@@ -1,0 +1,26 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/app-lits-devops1
+hooks:
+  BeforeInstall:
+    - location: infrastructure/AWSCodeDeploy/BeforeInstall.sh
+      timeout: 30
+      runas: root
+  AfterInstall:
+    - location: infrastructure/AWSCodeDeploy/AfterInstall.sh
+      timeout: 600
+      runas: root
+  ApplicationStop:
+    - location: infrastructure/AWSCodeDeploy/ApplicationStop.sh
+      timeout: 30
+      runas: root
+  ApplicationStart:
+    - location: infrastructure/AWSCodeDeploy/ApplicationStart.sh
+      timeout: 30
+      runas: root
+  ValidateService:
+    - location: infrastructure/AWSCodeDeploy/ValidateService.sh
+      timeout: 30
+      runas: root

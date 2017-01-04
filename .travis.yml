@@ -1,19 +1,36 @@
 language: node_js
-
 node_js:
-  - "5"
-  - "stable"
-
+- '6'
 sudo: false
-
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-
+- export DISPLAY=:99.0
+- export BRANCH_NAME=$TRAVIS_BRANCH
+- export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
+- sh -e /etc/init.d/xvfb start
 script:
-  - npm run lint
-  - npm test
-  - npm run test-node
-
+- npm run lint
+- npm test
+- npm run test-node
 notifications:
   slack: lits-devops-group1:RZl5uiQeW2Gxnn4ZXONaEW8V
+before_deploy:
+- echo $TRAVIS_COMMIT > .commit-hash
+- make create-dist
+deploy:
+  matrix:
+  - provider: s3
+    access_key_id: AKIAJMJRCBOI55AFCB6A
+    bucket: lits-devops1
+    skip_cleanup: true
+    local_dir: build
+    upload-dir: deployments
+  - provider: codedeploy
+    access_key_id: AKIAJMJRCBOI55AFCB6A
+    bucket: lits-devops1
+    key: deployments/app_$TRAVIS_BRANCH_$TRAVIS_BUILD_NUMBER.tar.gz
+    application: LITS-DevOps
+    deployment_group: Prod
+    on:
+      branch: master
+  secret_access_key:
+    secure: HY8/AD0N9kvR3aGc/y2S8XV4lg71UNMxMN8QbSTtvV9OSu865uyyJiBibxe8yMWuG6is8vAB305ydsUQUg7m0EKEyHMkmN9622n6EZyiS7O0cSFdwn6RAYLxE4oXdKK/dlHueGpNu01B101uvieBTZD0GYJZ+NIQLKNtr9LqAV77VR2pgr1xSzduWIfmxWVEyxz8qqmupIrdESGHAjiCIgm6UZBGpn+qrnO6tb0Hb1llrSOfqES/iDR4Iz6duy9jKbDYidcFBOv8acsAArbMBa2f1cIfguxUxITootZrOnnVNGm+a/7q6VFX6eU/Y3/3QIAnXnHIx3VWvhIJ3dfFshmCPfMKCwWjW9FayCbK2sdXaNvqyAPsaqVrzd5Enwdxg03VOh4oNmK2ziYXISF7IPw1hZJDYwHlkGHOcdjniKg2nWtMnI0XVGJ90IXAmjSJNTujkf/uURjG0Cv5Wxx5Ln325p3oSDZZcONM9V03N4lA+QvoNKenfMX9I9sPpDoVqiPkgyQRxOgfcGyN3PNLikRloS5VkAmoCTQLXkiX1NHGjmw7/b636L//xVdiKGzaNEyswMH25cJ3TvZgjlOH++/ozrn/xFpahhQKi55HYQuqS0KHFZL7KNF5iXNXvQNDrBxESmUBaCaTUhrs95pe+VJbwPrstlzPV+powy/G/fc=

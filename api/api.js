@@ -7,6 +7,7 @@ import {mapUrl} from 'utils/url.js';
 import PrettyError from 'pretty-error';
 import http from 'http';
 import SocketIo from 'socket.io';
+import { ping } from 'express-ping';
 
 const pretty = new PrettyError();
 const app = express();
@@ -15,6 +16,8 @@ const server = new http.Server(app);
 
 const io = new SocketIo(server);
 io.path('/ws');
+
+app.use(ping());
 
 app.use(session({
   secret: 'react and redux rule!!!!',
