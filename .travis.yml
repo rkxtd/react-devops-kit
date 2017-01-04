@@ -16,5 +16,4 @@ script:
   - npm run test-node
 
 notifications:
-  slack:
-    on_success: always
+  slack: lits-devops-group1:RZl5uiQeW2Gxnn4ZXONaEW8V
