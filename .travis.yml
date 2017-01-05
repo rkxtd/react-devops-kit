@@ -25,6 +25,7 @@ deploy:
   skip_cleanup: true
   local_dir: build
   upload-dir: deployments
+  region: eu-west-1
   on:
     branch: master
 - provider: codedeploy
@@ -35,5 +36,6 @@ deploy:
   key: deployments/app_$TRAVIS_BRANCH_$TRAVIS_BUILD_NUMBER.tar.gz
   application: LITS-DevOps
   deployment_group: Prod
+  region: eu-west-1
   on:
     branch: master
