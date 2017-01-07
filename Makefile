@@ -22,4 +22,4 @@ create-dist:
             package.json \
             server.babel.js .babelrc \
             webpack-assets.json
-	chmod 755 $(BUILD_DIR)/${APP_NAME}_${BRANCH_NAME}_${BUILD_NUMBER}.tar.gz
+	chmod 755 $(BUILD_DIR)/${APP_NAME}-${BUILD_NUMBER}-${BRANCH_NAME}.tar.gz
