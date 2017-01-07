@@ -12,7 +12,7 @@ create-dist:
 	@echo Create a build dir
 	rm -rf $(BUILD_DIR)
 	mkdir -p $(BUILD_DIR)
-	tar czvf $(BUILD_DIR)/${APP_NAME}_${BRANCH_NAME}_${BUILD_NUMBER}.tar.gz api/** \
+	tar czvf $(BUILD_DIR)/${APP_NAME}-${BUILD_NUMBER}-${BRANCH_NAME}.tar.gz api/** \
             bin/** \
             src/** \
             static/** \
