@@ -32,7 +32,7 @@ deploy:
   access_key_id: AKIAIGA6MGVKK7QE2HIA
   secret_access_key: *1
   bucket: lits-devops1
-  key: deployments/app_$BRANCH_NAME_$BUILD_NUMBER.tar.gz
+  key: deployments/app_$BRANCH_NAME.tar.gz
   application: LITS-DevOps
   deployment_group: Prod
   region: eu-west-1
