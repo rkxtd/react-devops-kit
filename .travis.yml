@@ -6,6 +6,7 @@ before_script:
 - export DISPLAY=:99.0
 - export BRANCH_NAME=$TRAVIS_BRANCH
 - export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
+- export BUILD_FILE_NAME=app_$TRAVIS_BRANCH_$TRAVIS_BUILD_NUMBER
 - sh -e /etc/init.d/xvfb start
 script:
 - npm run lint
@@ -32,7 +33,7 @@ deploy:
   access_key_id: AKIAIGA6MGVKK7QE2HIA
   secret_access_key: *1
   bucket: lits-devops1
-  key: deployments/app_$BRANCH_NAME.tar.gz
+  key: deployments/$BUILD_FILE_NAME.tar.gz
   application: LITS-DevOps
   deployment_group: Prod
   region: eu-west-1
