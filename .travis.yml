@@ -17,7 +17,7 @@ before_deploy:
 - echo "app_$TRAVIS_BRANCH_$TRAVIS_BUILD_NUMBER.tar.gz"
 - echo app_{$TRAVIS_BRANCH}_{$TRAVIS_BUILD_NUMBER}.tar.gz
 - echo $TRAVIS_BRANCH_$TRAVIS_BUILD_NUMBER
-- echo $TRAVIS_BRANCH__$TRAVIS_BUILD_NUMBER
+- echo $TRAVIS_BRANCH_build_$TRAVIS_BUILD_NUMBER
 - echo $TRAVIS_COMMIT > .commit-hash
 - make create-dist
 deploy:
