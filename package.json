@@ -41,6 +41,7 @@
     "test-node": "./node_modules/mocha/bin/mocha $(find api -name '*-test.js') --compilers js:babel-core/register",
     "test-node-watch": "./node_modules/mocha/bin/mocha $(find api -name '*-test.js') --compilers js:babel-core/register --watch"
   },
+  "pre-commit": [ "lint" ],
   "betterScripts": {
     "start-prod": {
       "command": "pm2 start ./bin/server.js --name \"app\"",
@@ -187,6 +188,7 @@
     "node-sass": "^3.4.2",
     "phantomjs": "^1.9.18",
     "phantomjs-polyfill": "0.0.1",
+    "pre-commit": "^1.2.2",
     "react-a11y": "^0.2.6",
     "react-addons-test-utils": "0.14.8",
     "react-transform-catch-errors": "^1.0.0",
