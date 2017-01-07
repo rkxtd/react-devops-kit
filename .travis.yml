@@ -32,7 +32,7 @@ deploy:
   access_key_id: AKIAIGA6MGVKK7QE2HIA
   secret_access_key: *1
   bucket: lits-devops1
-  key: deployments/app_master_12.tar.gz
+  key: deployments/app_$TRAVIS_BRANCH_$TRAVIS_BUILD_NUMBER.tar.gz
   application: LITS-DevOps
   deployment_group: Prod
   region: eu-west-1
