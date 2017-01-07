@@ -14,7 +14,10 @@ script:
 notifications:
   slack: lits-devops-group1:RZl5uiQeW2Gxnn4ZXONaEW8V
 before_deploy:
-- echo app_$TRAVIS_BRANCH_$TRAVIS_BUILD_NUMBER.tar.gz
+- echo "app_$TRAVIS_BRANCH_$TRAVIS_BUILD_NUMBER.tar.gz"
+- echo app_{$TRAVIS_BRANCH}_{$TRAVIS_BUILD_NUMBER}.tar.gz
+- echo $TRAVIS_BRANCH_$TRAVIS_BUILD_NUMBER
+- echo $TRAVIS_BRANCH__$TRAVIS_BUILD_NUMBER
 - echo $TRAVIS_COMMIT > .commit-hash
 - make create-dist
 deploy:
