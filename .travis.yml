@@ -37,3 +37,4 @@ deploy:
   deployment_group: Prod
   region: eu-west-1
   on: *2
+  bundle_type: tgz
