@@ -19,23 +19,21 @@ before_deploy:
 deploy:
 - provider: s3
   access_key_id: AKIAIGA6MGVKK7QE2HIA
-  secret_access_key:
+  secret_access_key: &1
     secure: yUE7un+wYDwwCQPXIsosjFreOk2AZphvBlWt1hpxadDtsTOkwApHoRMv9KlpAeuTh3AywaYxYfGCEm5aO3CE5Cj3uJ2ieKG1M+/JPuLDwLNBdaCQT3P5ebGDIvfjgDBR2CghFPqZTIKPpqVXmvR96r7mamPhmQtSCpfzip61FOV9mkP1f1nDmq4aD8TRH6x7ZN5ARPmV+9CWGJ1CLXZGbSdOhSLV3en6+EJdkJ5I0RnsM/g50k/V3W+7F+hszYUaRZxl7Qc88QQi/3XdtADQRPLo2qqzZSKonriSlHcKKPtAkzfizOwjS6UgcQGJgxCBuAvdzHudPfYkOrozjW0kYZTHCsoVJqSJtS5sVhQ2pvzJ+r+LDrA3rNFq8Up+uliuxDeSDktJGpiiGSeR1l1N6N43yXH9bk21DfLM6NBUjWN6Hq2YtJC7uJ9ybTzfDRy7Yxx32pLfFeiZXFi1He4HVvy9qaDHWmwh0sWL/7Ue/Xr+r5gPya9Measha6IB3nOPZD+BXSXVuJ2wveYDUVgW95CnP5UaKrs9sx82LcB/1FpeNU0mGTV8M1nvULLBVZ0+gltsqe6tvB6HIv3vUmWt/3rilLoOVlGijV1ymuKRZV2uMQ8HLT85QuccVsdThK+5sAZOoE1SXFsPLtGF+tu/sAJqeSRfw5Dz68LWvwR9/vY=
   bucket: lits-devops1
   skip_cleanup: true
   local_dir: build
   upload-dir: deployments
   region: eu-west-1
-  on:
+  on: &2
     branch: master
 - provider: codedeploy
   access_key_id: AKIAIGA6MGVKK7QE2HIA
-  secret_access_key:
-    secure: yUE7un+wYDwwCQPXIsosjFreOk2AZphvBlWt1hpxadDtsTOkwApHoRMv9KlpAeuTh3AywaYxYfGCEm5aO3CE5Cj3uJ2ieKG1M+/JPuLDwLNBdaCQT3P5ebGDIvfjgDBR2CghFPqZTIKPpqVXmvR96r7mamPhmQtSCpfzip61FOV9mkP1f1nDmq4aD8TRH6x7ZN5ARPmV+9CWGJ1CLXZGbSdOhSLV3en6+EJdkJ5I0RnsM/g50k/V3W+7F+hszYUaRZxl7Qc88QQi/3XdtADQRPLo2qqzZSKonriSlHcKKPtAkzfizOwjS6UgcQGJgxCBuAvdzHudPfYkOrozjW0kYZTHCsoVJqSJtS5sVhQ2pvzJ+r+LDrA3rNFq8Up+uliuxDeSDktJGpiiGSeR1l1N6N43yXH9bk21DfLM6NBUjWN6Hq2YtJC7uJ9ybTzfDRy7Yxx32pLfFeiZXFi1He4HVvy9qaDHWmwh0sWL/7Ue/Xr+r5gPya9Measha6IB3nOPZD+BXSXVuJ2wveYDUVgW95CnP5UaKrs9sx82LcB/1FpeNU0mGTV8M1nvULLBVZ0+gltsqe6tvB6HIv3vUmWt/3rilLoOVlGijV1ymuKRZV2uMQ8HLT85QuccVsdThK+5sAZOoE1SXFsPLtGF+tu/sAJqeSRfw5Dz68LWvwR9/vY=
+  secret_access_key: *1
   bucket: lits-devops1
   key: deployments/app_$TRAVIS_BRANCH_$TRAVIS_BUILD_NUMBER.tar.gz
   application: LITS-DevOps
   deployment_group: Prod
   region: eu-west-1
-  on:
-    branch: master
+  on: *2
