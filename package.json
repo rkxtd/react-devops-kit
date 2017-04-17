@@ -41,7 +41,9 @@
     "test-node": "./node_modules/mocha/bin/mocha $(find api -name '*-test.js') --compilers js:babel-core/register",
     "test-node-watch": "./node_modules/mocha/bin/mocha $(find api -name '*-test.js') --compilers js:babel-core/register --watch"
   },
-  "pre-commit": [ "lint" ],
+  "pre-commit": [
+    "lint"
+  ],
   "betterScripts": {
     "start-prod": {
       "command": "pm2 start ./bin/server.js --name \"app\"",
@@ -118,7 +120,7 @@
     "body-parser": "^1.14.1",
     "compression": "^1.6.0",
     "express": "^4.13.3",
-    "express-ping": "^1.2.0",
+    "express-ping": "^1.4.0",
     "express-session": "^1.12.1",
     "file-loader": "^0.8.5",
     "hoist-non-react-statics": "^1.0.3",
