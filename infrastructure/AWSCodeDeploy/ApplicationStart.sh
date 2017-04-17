@@ -4,7 +4,7 @@ cd /home/ubuntu/app-lits-devops1
 
 APP_ENV=$DEPLOYMENT_GROUP_NAME
 
-if [ $DEPLOYMENT_GROUP_NAME == "prodGreen" ] || [ $DEPLOYMENT_GROUP_NAME == "prodBlue" ] ; then
+if [ $DEPLOYMENT_GROUP_NAME == "prodGreen" ] || [ $DEPLOYMENT_GROUP_NAME == "prodBlue" ] || [ $DEPLOYMENT_GROUP_NAME == "prod" ] ; then
     APP_ENV="prod"
 fi
 
