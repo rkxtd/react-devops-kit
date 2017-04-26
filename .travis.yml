@@ -77,7 +77,7 @@ deploy:
   bucket: lits-devops1
   key: deployments/app-$TRAVIS_BUILD_NUMBER-$TRAVIS_BRANCH.tar.gz
   application: LITS-DevOps
-  deployment_group: Staging
+  deployment_group: Dev
   region: eu-west-1
   on: *4
   bundle_type: tgz
