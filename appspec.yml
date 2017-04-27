@@ -7,11 +7,11 @@ hooks:
   BeforeInstall:
     - location: infrastructure/AWSCodeDeploy/BeforeInstall.sh
       timeout: 30
-      runas: ubuntu
+      runas: root
   AfterInstall:
     - location: infrastructure/AWSCodeDeploy/AfterInstall.sh
       timeout: 600
-      runas: ubuntu
+      runas: root
   ApplicationStop:
     - location: infrastructure/AWSCodeDeploy/ApplicationStop.sh
       timeout: 30
@@ -23,4 +23,4 @@ hooks:
   ValidateService:
     - location: infrastructure/AWSCodeDeploy/ValidateService.sh
       timeout: 30
-      runas: ubuntu
+      runas: root
