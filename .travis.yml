@@ -7,12 +7,14 @@ before_install:
   - export PATH=$PATH:$HOME/.local/bin
   - npm install pm2 -g
   - npm install casperjs -g
+  - pm2 kill
 
 before_script:
 - export DISPLAY=:99.0
 - export BRANCH_NAME=$TRAVIS_BRANCH
 - export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
 - sh -e /etc/init.d/xvfb start
+- npm run build
 - npm run start-prod-api
 - npm run start-prod
 
