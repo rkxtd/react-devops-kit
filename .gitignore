@@ -8,3 +8,6 @@ webpack-assets.json
 webpack-stats.json
 npm-debug.log
 *.swp
+pixel-perfect/references/bitmaps_test/
+pixel-perfect/html_report
+pixel-perfect/ci_report

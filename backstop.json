@@ -1,0 +1,46 @@
+{
+  "id": "backstop_test",
+  "viewports": [
+    {
+      "name": "phone",
+      "width": 320,
+      "height": 480
+    },
+    {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "name": "desktop",
+      "width": 1280,
+      "height": 1024
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "HomePage - container",
+      "url": "http://localhost:8080/",
+      "hideSelectors": [],
+      "selectors": [
+        "#content",
+        ".navbar-fixed-top"
+      ],
+      "selectorExpansion": true,
+      "removeSelectors": [],
+      "misMatchThreshold" : 0.1,
+      "requireSameDimensions" : true
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "pixel-perfect/references/bitmaps_reference",
+    "bitmaps_test": "pixel-perfect/references/bitmaps_test",
+    "casper_scripts": "pixel-perfect/scripts",
+    "html_report": "pixel-perfect/html_report",
+    "ci_report": "pixel-perfect/ci_report"
+  },
+  "casperFlags": [],
+  "engine": "phantomjs",
+  "report": ["browser", "CI"],
+  "debug": false
+}

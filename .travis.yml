@@ -5,20 +5,30 @@ sudo: false
 before_install:
   - pip install --user awscli
   - export PATH=$PATH:$HOME/.local/bin
+  - npm install pm2 -g
+  - npm install casperjs -g
+
 before_script:
 - export DISPLAY=:99.0
 - export BRANCH_NAME=$TRAVIS_BRANCH
 - export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
 - sh -e /etc/init.d/xvfb start
+- npm run start-prod-api
+- npm run start-prod
+
 script:
 - npm run lint
 - npm test
 - npm run test-node
+- npm run test-ui
+
 notifications:
   slack: lits-devops-group1:RZl5uiQeW2Gxnn4ZXONaEW8V
+
 before_deploy:
 - echo $TRAVIS_COMMIT > .commit-hash
 - make create-dist
+
 deploy:
 - provider: s3
   access_key_id: AKIAIGA6MGVKK7QE2HIA
