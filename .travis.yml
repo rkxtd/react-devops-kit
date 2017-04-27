@@ -61,3 +61,23 @@ deploy:
   region: eu-west-1
   on: *3
   bundle_type: tgz
+- provider: s3
+  access_key_id: AKIAIGA6MGVKK7QE2HIA
+  secret_access_key: *1
+  bucket: lits-devops1
+  skip_cleanup: true
+  local_dir: build
+  upload-dir: deployments
+  region: eu-west-1
+  on: &4
+    branch: develop
+- provider: codedeploy
+  access_key_id: AKIAIGA6MGVKK7QE2HIA
+  secret_access_key: *1
+  bucket: lits-devops1
+  key: deployments/app-$TRAVIS_BUILD_NUMBER-$TRAVIS_BRANCH.tar.gz
+  application: LITS-DevOps
+  deployment_group: Dev
+  region: eu-west-1
+  on: *4
+  bundle_type: tgz
