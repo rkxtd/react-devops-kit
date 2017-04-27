@@ -24,6 +24,9 @@ script:
 - npm run test-node
 - npm run test-ui
 
+after_failure:
+- pm2 kill
+
 notifications:
   slack: lits-devops-group1:RZl5uiQeW2Gxnn4ZXONaEW8V
 
