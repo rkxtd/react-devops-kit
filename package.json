@@ -40,8 +40,8 @@
     "test": "karma start",
     "test-node": "./node_modules/mocha/bin/mocha $(find api -name '*-test.js') --compilers js:babel-core/register",
     "test-node-watch": "./node_modules/mocha/bin/mocha $(find api -name '*-test.js') --compilers js:babel-core/register --watch",
-    "test-ui": "./node_modules/.bin/backstop test",
-    "test-ui-reference": "./node_modules/.bin/backstop reference"
+    "test-ui": "rm -rf pixel-perfect/references/bitmaps_reference && mkdir pixel-perfect/references/bitmaps_reference && aws s3 sync s3://lits-devops1/references/ pixel-perfect/references/bitmaps_reference && ./node_modules/.bin/backstop test",
+    "test-ui-reference": "./node_modules/.bin/backstop reference && aws s3 sync pixel-perfect/references/bitmaps_reference s3://lits-devops1/references/ --delete"
   },
   "pre-commit": [
     "lint"

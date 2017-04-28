@@ -10,13 +10,17 @@ before_script:
 - export BRANCH_NAME=$TRAVIS_BRANCH
 - export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
 - sh -e /etc/init.d/xvfb start
+- npm install pm2 -g
+- npm run start-prod-api
+- npm run start-prod
 script:
 - npm run lint
 - npm test
 - npm run test-node
-
+- npm run test-ui
+- pm2 kill
 after_failure:
-
+- pm2 kill
 notifications:
   slack: lits-devops-group1:RZl5uiQeW2Gxnn4ZXONaEW8V
 before_deploy:

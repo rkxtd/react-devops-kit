@@ -28,7 +28,7 @@
       ],
       "selectorExpansion": true,
       "removeSelectors": [],
-      "misMatchThreshold" : 0.1,
+      "misMatchThreshold" : 6,
       "requireSameDimensions" : true
     }
   ],

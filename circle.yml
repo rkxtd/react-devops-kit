@@ -19,10 +19,4 @@ test:
     - npm run lint
     - npm test
     - npm run test-node
-    - npm run test-ui-reference
-
-deployment:
-  prod:
-    branch: feature-backstop
-    commands:
-      - aws s3 sync pixel-perfect/references/bitmaps_reference s3://lits-devops1/references/ --delete
+    - npm run test-ui
