@@ -3,7 +3,7 @@ node_js:
 - '6'
 sudo: false
 before_install:
-- apt-get install pandoc
+- sudo apt-get install pandoc
 - gem install asciidoctor
 - pip install --user awscli
 - export PATH=$PATH:$HOME/.local/bin
