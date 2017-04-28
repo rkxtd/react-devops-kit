@@ -26,6 +26,7 @@ after_failure:
 notifications:
   slack: lits-devops-group1:RZl5uiQeW2Gxnn4ZXONaEW8V
 before_deploy:
+- pm2 kill
 - echo $TRAVIS_COMMIT > .commit-hash
 - make create-dist
 deploy:
