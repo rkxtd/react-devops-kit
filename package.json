@@ -44,7 +44,7 @@
     "test-ui:upload-references": "aws s3 sync pixel-perfect/references/bitmaps_reference s3://lits-devops1/references/ --delete",
     "test-ui": "npm run test-ui:download-references && ./node_modules/.bin/backstop test",
     "test-ui:report": "npm run test-ui:download-references && ./node_modules/.bin/backstop test --config=backstop.browser.json",
-    "test-ui:update": "./node_modules/.bin/backstop reference && test-ui:upload-references"
+    "test-ui:update": "./node_modules/.bin/backstop reference && npm run test-ui:upload-references"
   },
   "pre-commit": [
     "lint"
