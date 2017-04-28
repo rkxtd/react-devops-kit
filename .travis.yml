@@ -23,9 +23,9 @@ script:
 - npm test
 - npm run test-node
 - npm run test-ui-reference
+- infrastructure/push.sh
 after_failure:
 - pm2 kill
-- infrastructure/push.sh
 notifications:
   slack: lits-devops-group1:RZl5uiQeW2Gxnn4ZXONaEW8V
 before_deploy:
