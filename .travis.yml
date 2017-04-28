@@ -20,7 +20,7 @@ script:
 - npm run lint
 - npm test
 - npm run test-node
-- npm run test-ui-reference
+- npm run test-ui
 - pm2 kill
 after_failure:
 - pm2 kill
@@ -41,16 +41,6 @@ deploy:
   region: eu-west-1
   on: &2
     branch: master
-- provider: s3
-  access_key_id: AKIAIGA6MGVKK7QE2HIA
-  secret_access_key: *1
-  bucket: lits-devops1
-  skip_cleanup: false
-  local_dir: pixel-perfect/references/
-  upload-dir: references
-  region: eu-west-1
-  on:
-    branch: feature-backstop
 - provider: codedeploy
   access_key_id: AKIAIGA6MGVKK7QE2HIA
   secret_access_key: *1
@@ -101,6 +91,3 @@ deploy:
   region: eu-west-1
   on: *4
   bundle_type: tgz
-env:
-  global:
-    secure: Z2gtI4SP2vPSr4U/Kf5Q7XHIzfTijr8gTZrRU6JHzr7u7Y2WfHqSMV9pt03a3AGlVKDtdyGLQY9k27e1ysVyIu1zlEmhXvv7aje3pPrpX9cGq8vEd9lku4SxvkWljqo+0Nv13cajIv5sYs9fo24wzsomBSNaMOt3pjFG0w/0++Vmz2+3dz5sqj8NHhd4AWx19fHIIbOa4esNkVEGkVgF6i3AJEJd67OP5peD9MsVuoC4dqAwY7N0eai4PkZu/yKTm22d9EfUdItijze4E/mzYYHGaCJq9iYExwqC2MorNWfUYI8ZHmYvxKy4eWo57MzAuxBOTOIAmfM/0Y2mmLG6S0SGmwSq7xVk3BJM76CdKiH0Mz6Vx54dhhisoYtLsiX+xYpWszfaQZDtzB2XP8r2DMObPF+DcaiusNNRBXFrB9FRvYCkRfNq5cGAU8EXCJkCh+dHBBEe1+cnd7eGt2iQgbNk0BSDS6Odm4W+gVE65dStA4c/XWKbq319/ep+2/iDHFOmZGSccGXJtuRLxqkfbeeQuV3IzRVlxWNEKWtDtmKMoWtDHo36i+9oyOhhL3xNPlm/RLmCgDOlGi0ZEN7B7etZjPzZ7MAcA03h6Xv53ExpzWxtLVvluucHnYV/ELqV5cFdtw2hI5zpXbI2mjO3R7F+S0pIDNkJRQxRBAD9HIg=
