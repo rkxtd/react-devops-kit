@@ -20,7 +20,7 @@ script:
 - npm run lint
 - npm test
 - npm run test-node
-- npm run test-ui
+- npm run test-ui-reference
 - pm2 kill
 after_failure:
 - pm2 kill
