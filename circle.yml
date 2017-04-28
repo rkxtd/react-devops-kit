@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 4.0
+    version: 6.0
   environment:
     CONTINUOUS_INTEGRATION: true
 
@@ -8,10 +8,15 @@ dependencies:
   cache_directories:
     - node_modules
   override:
+    - npm install pm2 -g
     - npm prune && npm install
+    - npm run build
+    - npm run start-prod-api
+    - npm run start-prod
 
 test:
   override:
     - npm run lint
     - npm test
     - npm run test-node
+    - npm run test-ui
