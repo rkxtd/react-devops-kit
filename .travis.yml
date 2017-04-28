@@ -21,12 +21,12 @@ script:
 - npm test
 - npm run test-node
 - npm run test-ui-reference
+- pm2 kill
 after_failure:
 - pm2 kill
 notifications:
   slack: lits-devops-group1:RZl5uiQeW2Gxnn4ZXONaEW8V
 before_deploy:
-- pm2 kill
 - echo $TRAVIS_COMMIT > .commit-hash
 - make create-dist
 deploy:
@@ -50,7 +50,7 @@ deploy:
   upload-dir: references
   region: eu-west-1
   on:
-    branch: feature/backstop
+    branch: feature-backstop
 - provider: codedeploy
   access_key_id: AKIAIGA6MGVKK7QE2HIA
   secret_access_key: *1
