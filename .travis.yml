@@ -13,17 +13,13 @@ before_script:
 - export BRANCH_NAME=$TRAVIS_BRANCH
 - export BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
 - sh -e /etc/init.d/xvfb start
-- npm run build
-- npm run start-prod-api
-- npm run start-prod
 script:
 - npm run lint
 - npm test
 - npm run test-node
-- npm run test-ui
-- pm2 kill
+
 after_failure:
-- pm2 kill
+
 notifications:
   slack: lits-devops-group1:RZl5uiQeW2Gxnn4ZXONaEW8V
 before_deploy:
@@ -41,16 +37,6 @@ deploy:
   region: eu-west-1
   on: &2
     branch: master
-- provider: s3
-  access_key_id: AKIAIGA6MGVKK7QE2HIA
-  secret_access_key: *1
-  bucket: lits-devops1
-  skip_cleanup: false
-  local_dir: pixel-perfect/references/
-  upload-dir: references
-  region: eu-west-1
-  on:
-    branch: feature-backstop
 - provider: codedeploy
   access_key_id: AKIAIGA6MGVKK7QE2HIA
   secret_access_key: *1

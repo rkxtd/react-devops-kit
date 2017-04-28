@@ -12,6 +12,9 @@ dependencies:
     - npm install casperjs -g
     - pm2 kill
     - npm prune && npm install
+    - npm run build
+    - npm run start-prod-api
+    - npm run start-prod
 
 test:
   override:
