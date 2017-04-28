@@ -1,10 +1,8 @@
 language: node_js
 node_js:
 - '6'
-sudo: required
+sudo: false
 before_install:
-- sudo apt-get install pandoc
-- gem install asciidoctor
 - pip install --user awscli
 - export PATH=$PATH:$HOME/.local/bin
 - npm install pm2 -g
@@ -50,8 +48,8 @@ deploy:
   local_dir: pixel-perfect/references/
   upload-dir: references
   region: eu-west-1
-    on:
-      branch: feature/backstop
+  on:
+    branch: feature/backstop
 - provider: codedeploy
   access_key_id: AKIAIGA6MGVKK7QE2HIA
   secret_access_key: *1
