@@ -9,5 +9,6 @@ webpack-stats.json
 npm-debug.log
 *.swp
 pixel-perfect/references/bitmaps_test/
+pixel-perfect/references/bitmaps_reference/
 pixel-perfect/html_report
 pixel-perfect/ci_report
