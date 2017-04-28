@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - '6'
-sudo: false
+sudo: required
 before_install:
 - sudo apt-get install pandoc
 - gem install asciidoctor
