@@ -1,5 +1,5 @@
 {
-  "id": "prod_test",
+  "id": "backstop_test",
   "viewports": [
     {
       "name": "phone",
@@ -7,49 +7,40 @@
       "height": 480
     },
     {
-      "name": "tablet_v",
-      "width": 568,
+      "name": "tablet",
+      "width": 768,
       "height": 1024
     },
     {
-      "name": "tablet_h",
-      "width": 1024,
-      "height": 768
+      "name": "desktop",
+      "width": 1280,
+      "height": 1024
     }
   ],
   "scenarios": [
     {
-      "label": "BackstopJS Homepage",
-      "url": "https://garris.github.io/BackstopJS/",
+      "label": "HomePage - container",
+      "url": "http://localhost:8080/",
       "hideSelectors": [],
-      "removeSelectors": [],
-      "selectorExpansion": true,
       "selectors": [
-        ".jumbotron",
-        ".row.firstPanel",
-        ".firstPanel .col-sm-4:nth-of-type(2)",
-        ".firstPanel .col-sm-4:nth-of-type(3)",
-        ".firstPanel .col-sm-4:nth-of-type(4)",
-        ".secondPanel",
-        ".finalWords",
-        "footer"
+        "#content",
+        ".navbar-fixed-top"
       ],
-      "readyEvent": null,
-      "delay": 500,
+      "selectorExpansion": true,
+      "removeSelectors": [],
       "misMatchThreshold" : 0.1,
-      "onBeforeScript": "onBefore.js",
-      "onReadyScript": "onReady.js"
+      "requireSameDimensions" : true
     }
   ],
   "paths": {
-    "bitmaps_reference": "backstop_data/bitmaps_reference",
-    "bitmaps_test": "backstop_data/bitmaps_test",
-    "casper_scripts": "backstop_data/casper_scripts",
-    "html_report": "backstop_data/html_report",
-    "ci_report": "backstop_data/ci_report"
+    "bitmaps_reference": "pixel-perfect/references/bitmaps_reference",
+    "bitmaps_test": "pixel-perfect/references/bitmaps_test",
+    "casper_scripts": "pixel-perfect/scripts",
+    "html_report": "pixel-perfect/html_report",
+    "ci_report": "pixel-perfect/ci_report"
   },
   "casperFlags": [],
   "engine": "phantomjs",
-  "report": ["browser"],
+  "report": ["CI"],
   "debug": false
 }
