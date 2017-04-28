@@ -9,7 +9,6 @@ dependencies:
     - node_modules
   override:
     - npm install pm2 -g
-    - npm install casperjs -g
     - pm2 kill
     - npm prune && npm install
     - npm run build
