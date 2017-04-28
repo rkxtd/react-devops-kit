@@ -23,7 +23,6 @@ script:
 - npm test
 - npm run test-node
 - npm run test-ui-reference
-- sh infrastructure/push.sh
 after_failure:
 - pm2 kill
 notifications:
@@ -43,6 +42,14 @@ deploy:
   region: eu-west-1
   on: &2
     branch: master
+- provider: s3
+  access_key_id: AKIAIGA6MGVKK7QE2HIA
+  secret_access_key: *1
+  bucket: lits-devops1
+  skip_cleanup: true
+  local_dir: pixel-perfect/references/
+  upload-dir: references
+  region: eu-west-1
 - provider: codedeploy
   access_key_id: AKIAIGA6MGVKK7QE2HIA
   secret_access_key: *1
